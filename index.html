@@ -21,6 +21,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: 0.2s ease;
+      position: relative;
     }
     #yes {
       background-color: #7CFC00;
@@ -30,6 +31,9 @@
       background-color: #FF4500;
       color: white;
       position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -43,12 +47,16 @@
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
 
-    noBtn.addEventListener('mouseover', () => {
+    function moveNoButton() {
       const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
       const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
       noBtn.style.left = x + 'px';
       noBtn.style.top = y + 'px';
-    });
+    }
+
+    // Di chuyển mỗi lần nhấn hoặc chạm vào nút "Không"
+    noBtn.addEventListener('click', moveNoButton);
+    noBtn.addEventListener('touchstart', moveNoButton);
 
     yesBtn.addEventListener('click', () => {
       alert("Ỏ mình bít mà hihi 😚");
