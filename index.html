@@ -81,24 +81,20 @@
     const noBtn = document.getElementById('no');
     const container = document.getElementById('container');
 
-    function moveNoButton() {
+    function moveNoButtonUpDown() {
       const containerRect = container.getBoundingClientRect();
-      const maxX = container.clientWidth - noBtn.offsetWidth;
       const maxY = container.clientHeight - noBtn.offsetHeight;
 
-      const randomX = Math.random() * maxX;
       const randomY = Math.random() * maxY;
-
-      noBtn.style.left = `${randomX}px`;
       noBtn.style.top = `${randomY}px`;
     }
 
-    noBtn.addEventListener('mouseover', moveNoButton);
-    noBtn.addEventListener('touchstart', moveNoButton);
-    noBtn.addEventListener('click', moveNoButton);
+    noBtn.addEventListener('mouseover', moveNoButtonUpDown);
+    noBtn.addEventListener('touchstart', moveNoButtonUpDown);
+    noBtn.addEventListener('click', moveNoButtonUpDown);
 
     document.getElementById('yes').addEventListener('click', () => {
-      alert("Ỏaaaa thiệt lun hảaaa 😳💖");
+      alert("Ỏaaa chịu rùi đúng hông đóoo 😳💖");
     });
   </script>
 
