@@ -1,86 +1,97 @@
-<!DOCTYPE html>  <html lang="vi">  
-<head>  
-  <meta charset="UTF-8">  
-  <title>làm người iu t hong</title>  
-  <style>  
-    body {  
-      background-color: #ffe6f0;  
-      font-family: 'Comic Sans MS', cursive, sans-serif;  
-      text-align: center;  
-      padding-top: 100px;  
-    }  h1 {  
-  color: #cc0066;  
-  font-size: 28px;  
-}  
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>làm người iu t hong</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
 
-p {  
-  color: #444;  
-  font-size: 16px;  
-}  
+    h1 {
+      color: #cc0066;
+      font-size: 28px;
+    }
 
-#button-container {  
-  display: flex;  
-  justify-content: space-between;  
-  align-items: center;  
-  width: 300px;  
-  margin: 100px auto 0;  
-  position: relative;  
-  height: 60px;  
-}  
+    p {
+      color: #444;
+      font-size: 16px;
+    }
 
-.btn {  
-  padding: 12px 20px;  
-  font-size: 18px;  
-  border: none;  
-  border-radius: 8px;  
-  cursor: pointer;  
-}  
+    #button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 300px;
+      margin: 100px auto 0;
+      position: relative;
+      height: 60px;
+    }
 
-#noBtn {  
-  background-color: #f06292;  
-  color: white;  
-  position: absolute;  
-  left: 0;  
-  top: 0;  
-}  
+    .btn {
+      padding: 12px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-#yesBtn {  
-  background-color: #81c784;  
-  color: white;  
-  position: absolute;  
-  right: 0;  
-  top: 0;  
-}
+    #noBtn {
+      background-color: #f06292;
+      color: white;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: left 0.3s ease, top 0.3s ease; /* Hoạt ảnh mượt */
+    }
 
-  </style>  
-</head>  
-<body>    <h1>🎀 làm người iu t nhá 🥺 </h1>  
-  <p>thoát là đồng ý đó nhen 😗</p>    <div id="button-container">  
-    <button id="noBtn" class="btn">Không</button>  
-    <button id="yesBtn" class="btn">Có 😘</button>  
-  </div>    <script>  
-    const noBtn = document.getElementById("noBtn");  
-    const container = document.getElementById("button-container");  
-  
-    function moveButton() {  
-      const containerRect = container.getBoundingClientRect();  
-      const btnWidth = noBtn.offsetWidth;  
-      const btnHeight = noBtn.offsetHeight;  
-  
-      const maxX = container.clientWidth - btnWidth;  
-      const maxY = container.clientHeight - btnHeight;  
-  
-      const newX = Math.random() * maxX;  
-      const newY = Math.random() * maxY;  
-  
-      noBtn.style.left = `${newX}px`;  
-      noBtn.style.top = `${newY}px`;  
-    }  
-  
-    noBtn.addEventListener("click", moveButton);  
-  
-    document.getElementById("yesBtn").addEventListener("click", function() {  
-      alert("biết mà hihi 😚💗");  
-    });  
-  </script>  </body>  
-</html>  
+    #yesBtn {
+      background-color: #81c784;
+      color: white;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎀 làm người iu t nhá 🥺 </h1>
+  <p>thoát là đồng ý đó nhen 😗</p>
+
+  <div id="button-container">
+    <button id="noBtn" class="btn">Không</button>
+    <button id="yesBtn" class="btn">Có 😘</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const container = document.getElementById("button-container");
+
+    function moveButton() {
+      const containerRect = container.getBoundingClientRect();
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const maxX = container.clientWidth - btnWidth;
+      const maxY = container.clientHeight - btnHeight;
+
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    }
+
+    noBtn.addEventListener("click", moveButton);
+
+    document.getElementById("yesBtn").addEventListener("click", function () {
+      alert("biết mà hihi 😚💗");
+    });
+  </script>
+
+</body>
+</html>
