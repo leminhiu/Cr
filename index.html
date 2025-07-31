@@ -18,12 +18,12 @@
     h1 {
       font-size: 2em;
       color: #ff69b4;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
-    .button-container {
+    .button-row {
       display: flex;
-      gap: 20px;
+      gap: 40px;
       position: relative;
     }
 
@@ -33,51 +33,51 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: 0.2s;
     }
 
     #yes {
       background-color: #7CFC00;
       color: white;
+      z-index: 1;
     }
 
     #no {
       background-color: #FF4500;
       color: white;
       position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
 
-  <h1>Làm ny mình nhé? 🥺👉👈</h1>
+  <h1>Làm nym nhé? 🥺👉👈</h1>
 
-  <div class="button-container">
-    <button id="yes">Có 🥰</button>
+  <div class="button-row">
     <button id="no">Không 😤</button>
+    <button id="yes">Có 🥰</button>
   </div>
 
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
-    const container = document.querySelector('.button-container');
 
     function moveNoButton() {
-      const containerRect = container.getBoundingClientRect();
       const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 100;
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     }
 
-    // Ngăn bấm được nút "Không"
     noBtn.addEventListener('mouseover', moveNoButton);
     noBtn.addEventListener('touchstart', moveNoButton);
     noBtn.addEventListener('click', moveNoButton);
 
-    // Nút "Có"
     yesBtn.addEventListener('click', () => {
       alert("Ỏ mình bít mà hihi 😚");
     });
