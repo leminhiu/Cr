@@ -45,7 +45,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      transition: left 0.3s ease, top 0.3s ease; /* Hoạt ảnh mượt */
+      transition: left 0.3s ease, top 0.3s ease;
     }
 
     #yesBtn {
@@ -56,7 +56,7 @@
       top: 0;
     }
 
-    /* Popup */
+    /* Bảng popup */
     #popup {
       display: none;
       position: fixed;
@@ -65,10 +65,11 @@
       transform: translate(-50%, -50%);
       background-color: white;
       border: 3px solid #ff99cc;
-      padding: 30px;
-      border-radius: 12px;
+      padding: 60px;
+      width: 450px;
+      border-radius: 16px;
       z-index: 999;
-      font-size: 20px;
+      font-size: 22px;
       color: #cc0066;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
@@ -84,7 +85,7 @@
     <button id="yesBtn" class="btn">Có 😘</button>
   </div>
 
-  <!-- Popup sẽ hiện khi nhấn Có -->
+  <!-- Bảng popup -->
   <div id="popup">
     <p>Yayyy 🥰 Làm người iu t thiệt rùi hihi 💖</p>
   </div>
@@ -92,6 +93,7 @@
   <script>
     const noBtn = document.getElementById("noBtn");
     const container = document.getElementById("button-container");
+    const popup = document.getElementById("popup");
 
     function moveButton() {
       const containerRect = container.getBoundingClientRect();
@@ -106,14 +108,3 @@
 
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
-    }
-
-    noBtn.addEventListener("click", moveButton);
-
-    document.getElementById("yesBtn").addEventListener("click", function () {
-      document.getElementById("popup").style.display = "block";
-    });
-  </script>
-
-</body>
-</html>
