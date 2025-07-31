@@ -4,61 +4,80 @@
   <title>Làm nym nhé?</title>
   <style>
     body {
-      text-align: center;
       font-family: 'Arial', sans-serif;
-      margin-top: 100px;
       background-color: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
       overflow: hidden;
     }
+
     h1 {
       font-size: 2em;
       color: #ff69b4;
+      margin-bottom: 40px;
     }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
     button {
       padding: 15px 30px;
       font-size: 1em;
-      margin: 20px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      position: relative;
+      transition: 0.2s ease;
     }
+
     #yes {
       background-color: #7CFC00;
       color: white;
     }
+
     #no {
       background-color: #FF4500;
       color: white;
       position: absolute;
-      left: 50%;
-      top: 60%;
-      transform: translate(-50%, -50%);
     }
   </style>
 </head>
 <body>
 
-  <h1>Làm nym nhé? 🥺👉👈</h1>
-  <button id="yes">Có 🥰</button>
-  <button id="no">Không 😤</button>
+  <h1>Làm ny mình nhé? 🥺👉👈</h1>
+
+  <div class="button-container">
+    <button id="yes">Có 🥰</button>
+    <button id="no">Không 😤</button>
+  </div>
 
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
+    const container = document.querySelector('.button-container');
 
     function moveNoButton() {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      const containerRect = container.getBoundingClientRect();
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
       noBtn.style.left = `${x}px`;
       noBtn.style.top = `${y}px`;
     }
 
-    // Khi rê chuột tới hoặc chạm thì nút "Không" sẽ nhảy
+    // Ngăn bấm được nút "Không"
     noBtn.addEventListener('mouseover', moveNoButton);
     noBtn.addEventListener('touchstart', moveNoButton);
-    noBtn.addEventListener('click', moveNoButton); // chặn luôn bấm
+    noBtn.addEventListener('click', moveNoButton);
 
+    // Nút "Có"
     yesBtn.addEventListener('click', () => {
       alert("Ỏ mình bít mà hihi 😚");
     });
