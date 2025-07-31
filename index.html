@@ -9,6 +9,8 @@
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
       padding-top: 100px;
+      overflow: hidden;
+      position: relative;
     }
 
     h1 {
@@ -22,43 +24,41 @@
     }
 
     #button-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 300px;
-      margin: 100px auto 0;
       position: relative;
-      height: 60px;
+      width: 100%;
+      height: 300px;
+      margin-top: 50px;
     }
 
     .btn {
-      padding: 12px 20px;
-      font-size: 18px;
+      padding: 16px 28px;
+      font-size: 20px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
+      transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
+      position: absolute;
     }
 
     #noBtn {
       background-color: #f06292;
       color: white;
-      position: absolute;
-      left: 0;
-      top: 0;
+      left: 20px;
+      top: 20px;
     }
 
     #yesBtn {
       background-color: #81c784;
       color: white;
-      position: absolute;
-      right: 0;
-      top: 0;
+      right: 20px;
+      bottom: 20px;
+      position: fixed;
     }
   </style>
 </head>
 <body>
 
-  <h1>🎀 làm người iu t nhá 🥺 </h1>
+  <h1>🎀 làm người iu t nhá 🥺</h1>
   <p>thoát là đồng ý đó nhen 😗</p>
 
   <div id="button-container">
@@ -68,15 +68,15 @@
 
   <script>
     const noBtn = document.getElementById("noBtn");
-    const container = document.getElementById("button-container");
 
     function moveButton() {
-      const containerRect = container.getBoundingClientRect();
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
       const btnWidth = noBtn.offsetWidth;
       const btnHeight = noBtn.offsetHeight;
 
-      const maxX = container.clientWidth - btnWidth;
-      const maxY = container.clientHeight - btnHeight;
+      const maxX = winWidth - btnWidth - 20;
+      const maxY = winHeight - btnHeight - 20;
 
       const newX = Math.random() * maxX;
       const newY = Math.random() * maxY;
@@ -87,7 +87,7 @@
 
     noBtn.addEventListener("click", moveButton);
 
-    document.getElementById("yesBtn").addEventListener("click", function() {
+    document.getElementById("yesBtn").addEventListener("click", function () {
       alert("biết mà hihi 😚💗");
     });
   </script>
