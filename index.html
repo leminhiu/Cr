@@ -1,102 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Làm nym nhé?</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF‑8">
+  <title>Crush dễ thương</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #ffe6f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 1.3em;
-      color: #ff4da6;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .button-row {
-      position: relative;
-      width: 90vw;
-      height: 100px;
-      max-width: 350px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    button {
-      padding: 10px 18px;
-      font-size: 0.9em;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      min-width: 90px;
-      position: absolute;
-      transition: all 0.2s ease;
-    }
-
-    #yes {
-      background-color: #7CFC00;
-      color: white;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-    }
-
-    #no {
-      background-color: #FF4500;
-      color: white;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
-    }
+    body { font-family: Arial; background: #ffe6f0; text-align: center; height:100vh; margin:0; position:relative; overflow:hidden; }
+    h1 { color:#b30059; font-size:1.6em; margin-top:40px; }
+    button { position:absolute; padding:12px 20px; font-size:1em; border:none; border-radius:8px; cursor:pointer; }
+    #yes { background:#7CFC00; color:#fff; right:10px; bottom:40px; }
+    #no { background:#ff4500; color:#fff; left:10px; bottom:40px; }
   </style>
 </head>
 <body>
-
-  <h1>Làm nym nhé? 🥺👉👈</h1>
-
-  <div class="button-row" id="container">
-    <button id="no">Không 😤</button>
-    <button id="yes">Có 🥰</button>
-  </div>
-
+  <h1>🎀 Anh còn iu em nữaaa hongg?</h1>
+  <p>Nếu anh không chọn hoặc thoát là anhh ghét emm 😢</p>
+  <button id="no">Không yêu em 😤</button>
+  <button id="yes">Em yêu anh 😍</button>
   <script>
-    const noBtn = document.getElementById('no');
-    const container = document.getElementById('container');
-
-    function moveNoButtonUpDown() {
-      const containerRect = container.getBoundingClientRect();
-      const maxY = container.clientHeight - noBtn.offsetHeight;
-
-      const randomY = Math.random() * maxY;
-      noBtn.style.top = `${randomY}px`;
+    const no = document.getElementById('no');
+    no.addEventListener('mouseover', moveNo);
+    no.addEventListener('touchstart', moveNo);
+    no.addEventListener('click', moveNo);
+    function moveNo() {
+      const x = Math.random()*(window.innerWidth - no.offsetWidth);
+      const y = Math.random()*(window.innerHeight - no.offsetHeight);
+      no.style.left = x + 'px';
+      no.style.top = y + 'px';
     }
-
-    noBtn.addEventListener('mouseover', moveNoButtonUpDown);
-    noBtn.addEventListener('touchstart', moveNoButtonUpDown);
-    noBtn.addEventListener('click', moveNoButtonUpDown);
-
     document.getElementById('yes').addEventListener('click', () => {
-      alert("Ỏaaa chịu rùi đúng hông đóoo 😳💖");
+      alert("Em chịu rùi đó 😚💕");
     });
   </script>
-
 </body>
 </html>
