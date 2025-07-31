@@ -22,11 +22,13 @@
     }
 
     #button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 300px;
+      margin: 100px auto 0;
       position: relative;
-      width: 100%;
-      max-width: 400px;
-      margin: 100px auto;
-      height: 200px;
+      height: 60px;
     }
 
     .btn {
@@ -35,12 +37,12 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      position: absolute;
     }
 
     #noBtn {
       background-color: #f06292;
       color: white;
+      position: absolute;
       left: 0;
       top: 0;
     }
@@ -48,19 +50,20 @@
     #yesBtn {
       background-color: #81c784;
       color: white;
+      position: absolute;
       right: 0;
-      bottom: 0;
+      top: 0;
     }
   </style>
 </head>
 <body>
 
   <h1>🎀 làm người iu t nhá 🥺 </h1>
-  <p> thoát là đồng ý đó nhen 😗 </p>
+  <p>thoát là đồng ý đó nhen 😗</p>
 
   <div id="button-container">
-    <button id="noBtn" class="btn">Không  </button>
-    <button id="yesBtn" class="btn">Có 😘 </button>
+    <button id="noBtn" class="btn">Không</button>
+    <button id="yesBtn" class="btn">Có 😘</button>
   </div>
 
   <script>
@@ -85,7 +88,7 @@
     noBtn.addEventListener("click", moveButton);
 
     document.getElementById("yesBtn").addEventListener("click", function() {
-      alert(" biết mà hihi 😚💗");
+      alert("biết mà hihi 😚💗");
     });
   </script>
 
