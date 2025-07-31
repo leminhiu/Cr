@@ -23,41 +23,48 @@
     }
 
     h1 {
-      font-size: 1.8em;
+      font-size: 1.3em;
       color: #ff4da6;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       text-align: center;
     }
 
     .button-row {
-      display: flex;
-      justify-content: space-between;
-      width: 90%;
-      max-width: 400px;
       position: relative;
+      width: 90vw;
+      height: 100px;
+      max-width: 350px;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     button {
-      padding: 12px 20px;
-      font-size: 1em;
+      padding: 10px 18px;
+      font-size: 0.9em;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      z-index: 1;
-      min-width: 100px;
+      min-width: 90px;
+      position: absolute;
+      transition: all 0.2s ease;
     }
 
     #yes {
       background-color: #7CFC00;
       color: white;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
     }
 
     #no {
       background-color: #FF4500;
       color: white;
-      position: absolute;
       left: 0;
-      top: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
     }
   </style>
 </head>
@@ -65,20 +72,19 @@
 
   <h1>Làm nym nhé? 🥺👉👈</h1>
 
-  <div class="button-row">
+  <div class="button-row" id="container">
     <button id="no">Không 😤</button>
     <button id="yes">Có 🥰</button>
   </div>
 
   <script>
     const noBtn = document.getElementById('no');
-    const yesBtn = document.getElementById('yes');
-    const row = document.querySelector('.button-row');
+    const container = document.getElementById('container');
 
     function moveNoButton() {
-      const rowRect = row.getBoundingClientRect();
-      const maxX = row.clientWidth - noBtn.offsetWidth;
-      const maxY = row.clientHeight - noBtn.offsetHeight;
+      const containerRect = container.getBoundingClientRect();
+      const maxX = container.clientWidth - noBtn.offsetWidth;
+      const maxY = container.clientHeight - noBtn.offsetHeight;
 
       const randomX = Math.random() * maxX;
       const randomY = Math.random() * maxY;
@@ -91,8 +97,8 @@
     noBtn.addEventListener('touchstart', moveNoButton);
     noBtn.addEventListener('click', moveNoButton);
 
-    yesBtn.addEventListener('click', () => {
-      alert("Ỏa thiệt hả 😳 Mình vui lắm lun ó 😚");
+    document.getElementById('yes').addEventListener('click', () => {
+      alert("Ỏaaaa thiệt lun hảaaa 😳💖");
     });
   </script>
 
