@@ -1,93 +1,14 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Anh iu em hong?</title>
-  <style>
-    body {
-      background-color: #ffe6f0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-
-    h1 {
-      color: #cc0066;
-      font-size: 28px;
-    }
-
-    p {
-      color: #444;
-      font-size: 18px;
-    }
-
-    #button-container {
-      position: relative;
-      width: 100%;
-      max-width: 400px;
-      margin: 100px auto;
-      height: 200px;
-    }
-
-    .btn {
-      padding: 12px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      position: absolute;
-    }
-
-    #noBtn {
-      background-color: #f06292;
-      color: white;
-      left: 0;
-      top: 0;
-    }
-
-    #yesBtn {
-      background-color: #81c784;
-      color: white;
-      right: 0;
-      bottom: 0;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>🎀 Anh còn iu em nữaaa hongg?</h1>
-  <p>Nếu anh không chọn hoặc thoát là anhh ghét emm 😢</p>
-
-  <div id="button-container">
-    <button id="noBtn" class="btn">Không 😤</button>
-    <button id="yesBtn" class="btn">Có 🥰</button>
-  </div>
-
-  <script>
-    const noBtn = document.getElementById("noBtn");
-    const container = document.getElementById("button-container");
-
-    function moveButton() {
-      const containerRect = container.getBoundingClientRect();
-      const btnWidth = noBtn.offsetWidth;
-      const btnHeight = noBtn.offsetHeight;
-
-      const maxX = container.clientWidth - btnWidth;
-      const maxY = container.clientHeight - btnHeight;
-
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-
-      noBtn.style.left = `${newX}px`;
-      noBtn.style.top = `${newY}px`;
-    }
-
-    noBtn.addEventListener("click", moveButton);
-
-    document.getElementById("yesBtn").addEventListener("click", function() {
-      alert("Em biết mà hihi 😚💗");
-    });
-  </script>
-
-</body>
-</html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anh iu em hong?</title>
+<style>
+/* ... CSS như trên ... */
+</style>
+</head><body>
+<h1>🎀 Anh còn iu em nữaaa hongg?</h1><p>Nếu anh không chọn hoặc thoát là anhh ghét emm 😢</p>
+<div id="button-container"><button id="no">Không 😤</button><button id="yes">Em iu anh 💖</button></div>
+<img src="cute.gif" alt="gif cute" style="max-width:80%;margin-top:20px">
+<script>
+// ... JS như trên ...
+</script>
+</body></html>
