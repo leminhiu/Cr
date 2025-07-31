@@ -1,45 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
+  <meta charset="UTF-8">
   <title>Làm nym nhé?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
+      padding: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #fff0f5;
+      background-color: #ffe6f0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
       overflow: hidden;
     }
 
     h1 {
       font-size: 1.8em;
-      color: #ff69b4;
+      color: #ff4da6;
       margin-bottom: 40px;
       text-align: center;
     }
 
     .button-row {
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      width: 100%;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 400px;
       position: relative;
-      height: 60px;
     }
 
     button {
-      padding: 12px 24px;
+      padding: 12px 20px;
       font-size: 1em;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.2s;
       z-index: 1;
+      min-width: 100px;
     }
 
     #yes {
@@ -51,6 +56,8 @@
       background-color: #FF4500;
       color: white;
       position: absolute;
+      left: 0;
+      top: 0;
     }
   </style>
 </head>
@@ -66,26 +73,28 @@
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
+    const row = document.querySelector('.button-row');
 
     function moveNoButton() {
-      const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight - 100;
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
+      const rowRect = row.getBoundingClientRect();
+      const maxX = row.clientWidth - noBtn.offsetWidth;
+      const maxY = row.clientHeight - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
     }
 
-    // Nút "Không" sẽ né mỗi khi chạm hoặc rê vào
     noBtn.addEventListener('mouseover', moveNoButton);
     noBtn.addEventListener('touchstart', moveNoButton);
     noBtn.addEventListener('click', moveNoButton);
 
-    // Nút "Có" hiển thị thông báo ngọt ngào
     yesBtn.addEventListener('click', () => {
-      alert("Ỏ mình bít mà hihi 😚");
+      alert("Ỏa thiệt hả 😳 Mình vui lắm lun ó 😚");
     });
   </script>
 
 </body>
-  </html>
+</html>
