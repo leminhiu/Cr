@@ -8,6 +8,7 @@
       font-family: 'Arial', sans-serif;
       margin-top: 100px;
       background-color: #fff0f5;
+      overflow: hidden;
     }
     h1 {
       font-size: 2em;
@@ -20,7 +21,6 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.2s ease;
       position: relative;
     }
     #yes {
@@ -50,13 +50,14 @@
     function moveNoButton() {
       const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
       const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
     }
 
-    // Di chuyển mỗi lần nhấn hoặc chạm vào nút "Không"
-    noBtn.addEventListener('click', moveNoButton);
+    // Khi rê chuột tới hoặc chạm thì nút "Không" sẽ nhảy
+    noBtn.addEventListener('mouseover', moveNoButton);
     noBtn.addEventListener('touchstart', moveNoButton);
+    noBtn.addEventListener('click', moveNoButton); // chặn luôn bấm
 
     yesBtn.addEventListener('click', () => {
       alert("Ỏ mình bít mà hihi 😚");
