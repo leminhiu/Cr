@@ -13,12 +13,12 @@
 
     h1 {
       color: #cc0066;
-      font-size: 28px;
+      font-size: 180px;
     }
 
     p {
       color: #444;
-      font-size: 16px;
+      font-size: 140px;
     }
 
     #button-container {
@@ -45,7 +45,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      transition: left 0.3s ease, top 0.3s ease;
+      transition: left 0.3s ease, top 0.3s ease; /* Hoạt ảnh mượt */
     }
 
     #yesBtn {
@@ -56,7 +56,7 @@
       top: 0;
     }
 
-    /* Bảng popup */
+    /* Popup */
     #popup {
       display: none;
       position: fixed;
@@ -65,11 +65,10 @@
       transform: translate(-50%, -50%);
       background-color: white;
       border: 3px solid #ff99cc;
-      padding: 60px;
-      width: 450px;
-      border-radius: 16px;
+      padding: 30px;
+      border-radius: 12px;
       z-index: 999;
-      font-size: 22px;
+      font-size: 20px;
       color: #cc0066;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
@@ -85,7 +84,7 @@
     <button id="yesBtn" class="btn">Có 😘</button>
   </div>
 
-  <!-- Bảng popup -->
+  <!-- Popup sẽ hiện khi nhấn Có -->
   <div id="popup">
     <p>Yayyy 🥰 Làm người iu t thiệt rùi hihi 💖</p>
   </div>
@@ -93,7 +92,6 @@
   <script>
     const noBtn = document.getElementById("noBtn");
     const container = document.getElementById("button-container");
-    const popup = document.getElementById("popup");
 
     function moveButton() {
       const containerRect = container.getBoundingClientRect();
@@ -108,3 +106,14 @@
 
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
+    }
+
+    noBtn.addEventListener("click", moveButton);
+
+    document.getElementById("yesBtn").addEventListener("click", function () {
+      document.getElementById("popup").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
