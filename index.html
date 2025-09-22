@@ -1,119 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>làm người iu t hong</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lấy quà Trung Thu</title>
   <style>
-    body {
-      background-color: #ffe6f0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
+    :root{--bg:#fff7ec;--card:#fff;--accent:#ff6b6b;--shadow:rgba(20,20,20,0.12)}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, sans-serif;background:linear-gradient(180deg,#fffaf0 0%, #fff1e6 100%);height:100vh;margin:0;display:flex;align-items:center;justify-content:center}
+    .stage{width:360px;height:540px;background:var(--card);border-radius:18px;box-shadow:0 12px 30px var(--shadow);padding:22px;position:relative;overflow:hidden}
+    h1{font-size:20px;margin:8px 0 18px;text-align:center}
+    .question{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .buttons{display:flex;gap:12px}
+    button{padding:10px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .yes{background:linear-gradient(90deg,#ffd66b,#ff9f43)}
+    .no{background:#e9eef4;color:#333}/* gift */
+.playground{position:relative;flex:1;margin-top:12px;border-radius:12px;background:linear-gradient(180deg,#fffdfa,#fff7f0);display:flex;align-items:center;justify-content:center}
+.gift{width:110px;height:110px;border-radius:12px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform 220ms ease, box-shadow 220ms;box-shadow:0 8px 20px rgba(0,0,0,0.12);display:flex;align-items:center;justify-content:center}
+.box{width:100%;height:100%;background:linear-gradient(180deg,#ff9f43,#ff6b6b);border-radius:10px;position:relative;overflow:visible}
+.lid{position:absolute;left:0;right:0;top:-18px;height:36px;background:#ffd66b;border-radius:8px 8px 6px 6px;transform-origin:center bottom;transition:transform 450ms cubic-bezier(.2,.9,.3,1)}
+.ribbon{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:18px;height:60px;background:rgba(255,255,255,0.15);border-radius:6px}
+.open .lid{transform:rotateX(75deg) translateY(-6px)}
 
-    h1 {
-      color: #cc0066;
-      font-size: 80px;
-    }
+.message{position:absolute;left:16px;right:16px;bottom:18px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.9);text-align:center;display:none}
+.message.show{display:block}
 
-    p {
-      color: #444;
-      font-size: 50px;
-    }
+.hint{font-size:12px;color:#666;margin-top:8px;text-align:center}
 
-    #button-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 300px;
-      margin: 100px auto 0;
-      position: relative;
-      height: 60px;
-    }
+@media (max-width:420px){.stage{width:320px;height:520px}}
 
-    .btn {
-      padding: 20px 35px;
-      font-size: 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    #noBtn {
-      background-color: #f06292;
-      color: white;
-      position: absolute;
-      left: 0;
-      top: 0;
-      transition: left 0.3s ease, top 0.3s ease; /* Hoạt ảnh mượt */
-    }
-
-    #yesBtn {
-      background-color: #81c784;
-      color: white;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-
-    /* Popup */
-    #popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      border: 3px solid #ff99cc;
-      padding: 30px;
-      border-radius: 12px;
-      z-index: 999;
-      font-size: 20px;
-      color: #cc0066;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
   </style>
 </head>
 <body>
-
-  <h1>🎀 làm người iu t nhá 🥺 </h1>
-  <p>thoát là đồng ý đó nhen 😗</p>
-
-  <div id="button-container">
-    <button id="noBtn" class="btn">Không</button>
-    <button id="yesBtn" class="btn">Có 😘</button>
+  <div class="stage" role="application">
+    <div class="question">
+      <h1>lấy quà trung thu không?</h1>
+      <div class="buttons">
+        <button id="yes" class="yes">có</button>
+        <button id="no" class="no">không</button>
+      </div>
+    </div><div class="playground" id="playground">
+  <div class="gift" id="gift" aria-hidden="true">
+    <div class="box" id="box">
+      <div class="lid" id="lid"></div>
+      <div class="ribbon"></div>
+    </div>
   </div>
+</div>
 
-  <!-- Popup sẽ hiện khi nhấn Có -->
-  <div id="popup">
-    <p>Yayyy 🥰</p>
-  </div>
+<div id="message" class="message" role="status"></div>
+<div class="hint">Nhấn "có" để xem quà nhảy random, hoặc "không" để hiện câu nói.</div>
 
-  <script>
-    const noBtn = document.getElementById("noBtn");
-    const container = document.getElementById("button-container");
+  </div>  <script>
+    const yes = document.getElementById('yes');
+    const no = document.getElementById('no');
+    const gift = document.getElementById('gift');
+    const lid = document.getElementById('lid');
+    const playground = document.getElementById('playground');
+    const message = document.getElementById('message');
 
-    function moveButton() {
-      const containerRect = container.getBoundingClientRect();
-      const btnWidth = noBtn.offsetWidth;
-      const btnHeight = noBtn.offsetHeight;
+    function randInt(min, max){return Math.floor(Math.random()*(max-min+1))+min}
 
-      const maxX = container.clientWidth - btnWidth;
-      const maxY = container.clientHeight - btnHeight;
-
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-
-      noBtn.style.left = `${newX}px`;
-      noBtn.style.top = `${newY}px`;
-    }
-
-    noBtn.addEventListener("click", moveButton);
-
-    document.getElementById("yesBtn").addEventListener("click", function () {
-      document.getElementById("popup").style.display = "block";
+    yes.addEventListener('click', ()=>{
+      message.classList.remove('show');
+      lid.style.transform = '';
+      // make the gift jump to random positions inside playground
+      const jumps = randInt(6,12);
+      const gw = gift.offsetWidth, gh = gift.offsetHeight;
+      const pw = playground.clientWidth, ph = playground.clientHeight;
+      for(let i=0;i<jumps;i++){
+        const delay = i*220;
+        setTimeout(()=>{
+          const x = randInt(8, pw - gw - 8);
+          const y = randInt(8, ph - gh - 8);
+          gift.style.transform = `translate(${x}px, ${y}px)`;
+          // little scale/pop on move
+          gift.style.transition = 'transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms';
+          gift.style.boxShadow = '0 14px 30px rgba(0,0,0,0.18)';
+          setTimeout(()=>{ gift.style.boxShadow = '0 8px 20px rgba(0,0,0,0.12)'; }, 200);
+        }, delay);
+      }
+      // after final jump, open lid and show a message
+      setTimeout(()=>{
+        gift.classList.add('open');
+        message.textContent = 'Chúc mừng! Bạn đã nhận được quà trung thu 🎁';
+        message.classList.add('show');
+      }, jumps*220 + 150);
     });
-  </script>
 
-</body>
+    no.addEventListener('click', ()=>{
+      // show the record text exactly as user asked
+      message.textContent = 'vậy thì thôi nhé =))';
+      message.classList.add('show');
+    });
+
+    // accessibility: allow keyboard
+    yes.addEventListener('keyup', (e)=>{ if(e.key==='Enter' || e.key===' ') yes.click(); });
+    no.addEventListener('keyup', (e)=>{ if(e.key==='Enter' || e.key===' ') no.click(); });
+
+    // position gift initially to center using translate
+    function centerGift(){
+      const gw = gift.offsetWidth, gh = gift.offsetHeight;
+      const pw = playground.clientWidth, ph = playground.clientHeight;
+      const x = Math.round((pw - gw)/2);
+      const y = Math.round((ph - gh)/2);
+      gift.style.transform = `translate(${x}px, ${y}px)`;
+    }
+    window.addEventListener('load', centerGift);
+    window.addEventListener('resize', centerGift);
+  </script></body>
 </html>
